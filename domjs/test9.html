@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+	
+*{
+        padding: 0px;
+        margin: 0px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    #container{
+        width: 250px;
+        font-size: 14px;
+        margin: 100px auto;
+    }
+    #container ul li{
+        display: block;
+        float: left;
+        border: 1px #eee solid;
+        position: relative;
+        padding: 20px 15px 5px 15px;
+    }
+    #container ul li:hover{
+        border: 1px #f40 solid;
+    }
+    #container ul li p{
+        color: #999;
+        margin-top: 24px;
+    }
+    #container ul li p:hover{
+        color: #f40;
+    }
+    #container ul li span{
+        color: #f40;
+        top: 20px;
+        left: 50%;
+        margin-left: -10px;
+        position: absolute;
+    }
+
+
+</style>
+</head>
+<body>
+  <div id="container">
+    <ul>
+        <li><span><img src='img/001.jpg'/></span><p>邮件</p></li>
+        <li><span><img src='img/002.jpg'/></span><p>工具</p></li>
+        <li><span><img src='img/003.jpg'/></span><p>照片</p></li>
+        <li><span><img src='img/004.jpg'/></span><p>上传</p></li>
+    </ul>
+    <script type="text/javascript">
+    	var con = document.getElementById('container').getElementsByTagName('li');
+    	var conSpan = document.getElementById('container').getElementsByTagName('span');
+    	var isComplete = false;
+
+    	for(var i = 0; i < con.length; i++){
+    		con[i].ind = i;
+    		conSpan[i].timer = null;
+    		con[i].onmouseover = function(){
+    			event.stopPropagation();
+    			moveStar(conSpan[this.ind], {top:0, opacity:0}, function(obj){
+    				obj.style.top = 50 + 'px';
+    				moveStar(obj, {top:20, opacity:100});
+    			});
+    		}
+    	}
+    	
+    	function moveStar(obj, attrCLass, cb){
+    		clearInterval(obj.timer);
+
+    		obj.timer = setInterval(function(){
+    			for(attr in attrCLass){
+    				if((attr === 'opacity' ? getStyle(obj, attr)*100 : getStyle(obj, attr)) === attrCLass[attr]){
+    					isComplete = true;
+    					continue;
+    				}
+
+    				isComplete = false;
+
+    				if(attr === 'opacity'){
+    					var speed = (attrCLass[attr] - getStyle(obj, attr) * 100) / 10;
+    					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+    					obj.style[attr] = (getStyle(obj, attr) * 100 + speed) / 100.0;
+    				}
+    				else{
+    					var speed = (attrCLass[attr] - getStyle(obj, attr)) / 10;
+    					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+    					obj.style[attr] = getStyle(obj, attr) + speed + 'px';
+    				}
+    			}
+    			if(isComplete){
+    				clearInterval(obj.timer);
+    				if(cb){
+    					cb(obj);
+    				}
+    			}
+    		}, 10);
+    	}
+
+    	function getStyle(obj, attr){
+    		if(obj.currentStyle){
+    			return parseFloat(obj.currentStyle[attr]);
+    		}
+    		else{
+    			return parseFloat(getComputedStyle(obj, false)[attr])
+    		}
+    	}
+    </script>>
+</div>
+</body>
+</html>

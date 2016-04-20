@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		
+*{
+	padding: 0px;
+	margin: 0px;
+}
+#container{
+	height:170px;
+	width: 490px;
+	margin: 20px auto;
+	overflow: hidden;
+	position: relative;
+	background-color: #eee;
+}
+#pic
+{
+	position: absolute;
+	width: 2450px;
+}
+#pic li
+{
+	display: block;
+	height: 170px;
+	float: left;
+}
+.mar_top
+{
+	margin-right:-170px;
+}
+#menu
+{
+	border-radius: 10px;
+	position: absolute;
+	text-align: center;
+	font-size: 0px;
+	background: rgba(255, 255, 255, 0.5) none repeat scroll 0% 0%;
+	left:50%;
+	top:90%;
+	margin-left: -45px;
+}
+#menu li
+{
+	display: inline-block;
+	margin:2px;
+	background-color: #B7B7B7;
+	border-radius: 50%;
+}
+#menu li a
+{
+	display: block;
+	padding-top: 9px;
+	width: 9px;
+	height: 0px;
+	border-radius: 50%;
+}
+.select
+{
+	background-color: #F40;
+}
+	</style>
+</head>
+<body>
+<div id="container">
+	<ul id = "pic">
+		<li><img src="img/01.jpg"></li>
+		<li><img src="img/02.jpg"></li>
+		<li><img src="img/03.jpg"></li>
+		<li><img src="img/04.jpg"></li>
+		<li><img src="img/05.jpg"></li>
+	</ul>
+	<ul id="menu">
+		<li ><a class="select"></a></li>
+		<li><a></a></li>
+		<li><a></a></li>
+		<li><a></a></li>
+		<li><a></a></li>
+	</ul>
+</div>
+<script type="text/javascript">
+	var con = document.getElementById('pic');
+	var menu = document.getElementById('menu').getElementsByTagName('a');
+	var timer = null;
+	var autoTimer = null
+	var select = 0;
+
+	for(var i = 0; i < menu.length; i++){
+		menu[i].ind = i;
+		menu[i].onmouseover = function(){
+			play(this.ind);
+		}
+		menu[i].onmouseout = function(){
+			auto(this.ind);
+		}
+	}
+
+	function play(i){
+		clearInterval(timer);
+
+		var target = i * -490
+		menu[select].className = '';
+		select = i;
+		menu[select].className = 'select';
+
+		timer = setInterval(function(){
+			var speed = (target - con.offsetLeft) / 10;
+			speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+			if(con.offsetLeft == target){
+				clearInterval(timer);
+			}
+
+			con.style.left = con.offsetLeft + speed +'px';
+		}, 20);
+	}
+
+	function auto(start){
+		clearInterval(autoTimer);
+
+		i = start;
+
+		autoTimer = setInterval(function(){
+			play(i);
+
+			i++;
+
+			if(i >= menu.length){
+				i = 0;
+			}
+		}, 3000);
+	}
+
+	auto(1);
+</script>
+</body>
+</html>

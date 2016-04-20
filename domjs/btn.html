@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{ margin: 0; padding: 0; }
+		#block{ position: relative; position: absolute; left: -200px; width: 200px; height: 100px; background-color: red; }
+		#btn{ position: absolute; left: 200px; top: 25px; width: 30px; height: 50px; background-color: blue; }
+	</style>
+</head>
+<body>
+<div id="block">
+	<button id="btn"></button>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var block = document.getElementById('block');
+			var btn = document.getElementById('btn');
+			
+			btn.onclick = function(){
+				if(block.offsetLeft == -200){
+					moveOut();
+				}
+				else{
+					moveBack();
+				}
+			}
+		}
+
+		var timer = null;
+
+		function moveOut(){
+			clearInterval(timer);
+
+			timer = setInterval(function(){
+				if(block.offsetLeft == 0){
+					clearInterval(timer);
+				}
+				else{
+					block.style.left = block.offsetLeft+10+'px';
+				}
+			}, 30);
+		}
+
+		function moveBack(){
+			clearInterval(timer);
+
+			timer = setInterval(function(){
+				if(block.offsetLeft == -200){
+					clearInterval(timer);
+				}
+				else{
+					block.style.left = block.offsetLeft-10+'px';
+				}
+			}, 30);
+		}
+	</script>
+</div>
+</body>
+</html>

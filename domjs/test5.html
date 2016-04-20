@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#container{
+			border: 1px solid blue;
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			opacity: 0.5;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+	<script type="text/javascript">
+		function getStyle(obj, attr){
+			if(obj.currentStyle){
+				return parseFloat(obj.currentStyle[attr]);
+			}
+			else{
+				return parseFloat(getComputedStyle(obj,false)[attr]);
+			}
+		}
+
+		var timer = null;
+		var isComplete = false;
+
+		function startMove(obj, attrClass){
+			clearInterval(timer);
+
+			timer = setInterval(function(){
+				for(attr in attrClass){
+					if((attr === 'opacity'?getStyle(obj, attr)*100:getStyle(obj, attr)) === attrClass[attr]){
+						isComplete = true;
+						continue;
+					}
+
+					isComplete = false;
+
+					if(attr === 'opacity'){
+						var speed = (attrClass[attr] - getStyle(obj, attr)*100)/20;
+						speed = speed>0?Math.ceil(speed):Math.floor(speed);
+						obj.style[attr] = (getStyle(obj, attr)*100+speed)/100.0;
+					}
+					else{
+						var speed = (attrClass[attr] - getStyle(obj, attr))/20;
+						speed = speed>0?Math.ceil(speed):Math.floor(speed);
+						obj.style[attr] = getStyle(obj,attr)+speed+'px';
+					}
+				}
+			}, 30);
+		}
+
+		window.onload = function(){
+			var container = document.getElementById('container');
+			container.onmousemove = function(){
+				startMove(this, {width:300,height:300,opacity:100})
+			}
+		}
+	</script>
+</body>
+</html>

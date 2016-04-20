@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom practice</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .words-box {
+            width: 60%;
+            margin: 10rem auto 0;
+        }
+        .words-box span {
+            color: #30C9F9;
+            font-size: 3rem;
+            transition: all .5s;
+            display: inline-block;
+            transform-origin: 0 0;
+            text-shadow: 1px 1px 1px #999;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+
+            var magicWord = function(str) {
+
+                var wordBoxes,
+                    words = str.split(''),
+                    frg = document.createDocumentFragment(),    
+                    wordBox = document.querySelector('.words');
+
+                //create word box.
+                for(var i=0,len=words.length; i<len; i++) {
+                    var word = document.createElement('span');
+                    word.innerHTML = words[i];
+                    frg.appendChild(word);
+                }
+                 wordBox.appendChild(frg);
+                 frg = null;
+
+                wordBoxes = wordBox.querySelectorAll('span');
+                Array.from(wordBoxes).forEach(function(item, index) {
+                    //利用闭包做层次操作
+                    !function() {
+                        index += 1;
+                        setTimeout(function() {
+                            item.style.transform = 'scaleY(1.5) translate3d(-30px, -50px, 0)';
+
+                            item.addEventListener('webkitTransitionEnd', function() {
+                                item.style.transform = 'scaleY(1) translate3d(0, 0, 0)';
+                                //如果到了最后一个文字，在变换完成之后替换纯文本
+                                if(index === wordBoxes.length - 1) {
+                                    item.addEventListener('webkitTransitionEnd', function() {
+                                        wordBox.innerHTML = '<span>'+ str +'</span>';
+                                    }, false);
+                                }
+                            }, false);
+                        }, index * 100);
+                    }(index);
+                });    
+
+            };
+
+            magicWord('跳动的脉搏，年轻的生命。');
+
+        };
+    </script>
+</head>
+<body>
+    <div class="words-box">
+        <div class="words"></div>
+    </div>
+</body>
+</html>

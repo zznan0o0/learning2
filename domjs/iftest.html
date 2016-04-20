@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<iframe src="btn.html" id="iframepage" name="iframepage" frameBorder=0 scrolling=no width="100%" onLoad="iFrameHeight()" ></iframe>Javascript代码： 
+<script type="text/javascript" language="javascript"> 
+function iFrameHeight() { 
+var ifm= document.getElementById("iframepage"); 
+var subWeb = document.frames ? document.frames["iframepage"].document : ifm.contentDocument; 
+if(ifm != null && subWeb != null) { 
+ifm.height = subWeb.body.scrollHeight; 
+} 
+} 
+</script> 
+
+<style type="text/css">
+	.jindu{background: url("steps.png") no-repeat scroll 50% -102px;    color: #fff;font-family: "arial black";font-size: 18px;height: 34px;line-height: 34px;}
+</style>
+</body>
+</html>

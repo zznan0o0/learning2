@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="top">
+    	<%= title %>
+      <input type="range" max="100" min="0" value="60" id="volume">
+      <div class="select">
+        <div>Dot</div>
+        <div class="selected2">Column</div>
+      </div>
+    </div>
+    <div class="left">
+      <% fileNames.forEach(function(name){ %>
+        <p><%= name %></p>
+      <% }) %>
+    </div>
+    <div class="right"></div>
+    <script type="text/javascript" src="javascripts/js.js"></script>
+  </body>
+</html>

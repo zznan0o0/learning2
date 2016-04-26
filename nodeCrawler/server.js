@@ -48,4 +48,39 @@ var imgCrawler = function(url){
 	console.log('succeed')
 }
 
-imgCrawler(url);
+var urlCrawler = function(url){
+	if(!fs.existsSync('url')){
+		fs.mkdirSync('url');
+	}
+	var date = new Date();
+	var fileName = date.getFullYear().toString() + (date.getMonth()+1) + date.getDate() + date.getHours() +date.getMinutes() + date.getSeconds() + date.getMilliseconds();
+	fs.mkdirSync('url/' + fileName);
+	console.log('succeed create ' + fileName);
+	var html = ''
+	http.get(url, function(req){
+		console.log('正在爬取 ' + url + '...........');
+		req.on('data', function(data){
+			html += data;
+		});
+
+		req.on('end', function(){
+			$ = cheerio.load(html);
+
+			var urlAll = ''
+			var src = $('[src]');
+			var href = $('[href]');
+			src.each(function(index){
+				urlAll += ($(this).attr('src') + '\r\n');
+			});
+
+			href.each(function(index){
+				urlAll += ($(this).attr('href') + '\r\n');
+			});
+
+			fs.writeFileSync('url/' + fileName + '/' + 'urlAll.txt', urlAll);
+
+		});
+	});
+}
+
+urlCrawler(url);

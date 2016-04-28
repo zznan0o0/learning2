@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css">
+    #a1 {
+        width: 200px;
+        height: 190px;
+        background: url(photo/big-icon-pc.png) 0 0 no-repeat;
+        background-size: 80% 100%;
+    }
+
+    #a1:hover{
+    	animation: rubberBand 2s;
+    }
+    
+    @-webkit-keyframes rubberBand {
+        0% {
+            -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1)
+        }
+        30% {
+            -webkit-transform: scale3d(1.25, .75, 1);
+            transform: scale3d(1.25, .75, 1)
+        }
+        40% {
+            -webkit-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1)
+        }
+        50% {
+            -webkit-transform: scale3d(1.15, .85, 1);
+            transform: scale3d(1.15, .85, 1)
+        }
+        65% {
+            -webkit-transform: scale3d(.95, 1.05, 1);
+            transform: scale3d(.95, 1.05, 1)
+        }
+        75% {
+            -webkit-transform: scale3d(1.05, .95, 1);
+            transform: scale3d(1.05, .95, 1)
+        }
+        100% {
+            -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1)
+        }
+    }
+    
+    @keyframes rubberBand {
+        0% {
+            -webkit-transform: scale3d(1, 1, 1);
+            -ms-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1)
+        }
+        30% {
+            -webkit-transform: scale3d(1.25, .75, 1);
+            -ms-transform: scale3d(1.25, .75, 1);
+            transform: scale3d(1.25, .75, 1)
+        }
+        40% {
+            -webkit-transform: scale3d(0.75, 1.25, 1);
+            -ms-transform: scale3d(0.75, 1.25, 1);
+            transform: scale3d(0.75, 1.25, 1)
+        }
+        50% {
+            -webkit-transform: scale3d(1.15, .85, 1);
+            -ms-transform: scale3d(1.15, .85, 1);
+            transform: scale3d(1.15, .85, 1)
+        }
+        65% {
+            -webkit-transform: scale3d(.95, 1.05, 1);
+            -ms-transform: scale3d(.95, 1.05, 1);
+            transform: scale3d(.95, 1.05, 1)
+        }
+        75% {
+            -webkit-transform: scale3d(1.05, .95, 1);
+            -ms-transform: scale3d(1.05, .95, 1);
+            transform: scale3d(1.05, .95, 1)
+        }
+        100% {
+            -webkit-transform: scale3d(1, 1, 1);
+            -ms-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1)
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="a1"></div>
+    <script type="text/javascript">
+    var a1 = document.getElementById('a1');
+
+    var animation = function(obj) {}
+
+    animation.prototype.getStyle = function(obj, attr) {
+        return obj.attr;
+    }
+
+    animation.prototype.sizeChange = function(obj, width, height) {
+        obj.style.width = width;
+        obj.style.height = height;
+    }
+
+    animation.prototype.jelly = function() {
+        timer = setInterval(function() {
+
+        }, 13)
+    }
+    </script>
+</body>
+
+</html>

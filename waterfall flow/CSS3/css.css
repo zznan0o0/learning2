@@ -1,0 +1,22 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+#container{
+	-webkit-column-width: 202px;
+}
+.box{
+	padding: 15px 0 0 15px;
+}
+.pic{
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #ccc;
+	width: 165px;
+}
+.pic img{
+	width: 165px;
+	height: auto;
+	display: block;
+}

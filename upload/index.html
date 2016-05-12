@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽上传</title>
+    <style>
+        body {
+            margin:0;
+        }    
+        #drop {
+            width:50%;
+            height:300px;
+            color:#C9EEFF;
+            font-size:24px;
+            line-height:50px;
+            text-align: center;
+            margin:100px auto 0;
+            border:2px dotted #ccc;
+            text-shadow:1px 1px 1px #ccc;
+        }
+
+    </style>
+</head>
+<body>
+    <section id="drop">拖拽文件到这里</section>
+    <p id="show"></p>
+    <script type="text/javascript">
+    	var drop = document.getElementById('drop');
+    	var show = document.getElementById('show');
+    	drop.ondragover = function(e){
+    		e.preventDefault();
+    	}
+    	drop.ondrop = function(e){
+    		e.preventDefault();
+    		
+    		var data = e.dataTransfer.files;
+    		var size = 0;
+    		var Type = true;
+    		var name = '';
+    		
+    		for(var i = 0; i < data.length; i++){
+    			size += data[i].size;
+    			name += (data[i].name + ';  ');
+    		}
+    		
+    		for(var i = 0; i < data.length; i++){
+    			if(!data[i].type){
+    				Type = false;
+    				break;
+    			}
+    		}
+    		console.log(data)
+    		if(size/1024/1024 > 5){
+    			alert('一次上传不能超过5MB以上');
+    		}
+    		else if(Type == false){
+    			alert('文件中包含不支持的类型（比如文件夹）请重新检查');
+    		}
+    		else{
+    			this.style.color = '#00AFFF';
+	    		this.style.border = '#00AFFF 2px solid';
+    			this.innerHTML = name;
+    			//创建表单对象
+    			var formData = new FormData();
+    			formData.append('data', data[0]);
+    			//ajax 创建XMLHttpRequest 
+    			var http = new XMLHttpRequest();
+    			//open设置 (传输方式, 页面名称, 是否异步上传)
+    			http.open('post', 'upload', true);
+    			//设置编码方式 post才用
+    			http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    			http.onreadystatechange = function(e){
+    				var res = null;
+    				if(http.status === 200 && http.readyState === 4){
+    					if(http.responseText){
+    						console.log(http.responseText)
+    					}
+    				}
+    			}
+    			http.send(formData);
+    		}    		
+    	}
+    </script>
+</body>
+</html>

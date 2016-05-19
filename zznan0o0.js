@@ -1,7 +1,7 @@
 //根据class获取节点， 第一个参数为class， 第二个参数为根据id选择其之下class不填默认document
-function getByClass(classname, idname){
-	var doc = idname?document.getElementById(idname):document;
-	var elementAll = doc.getElementsByTagName('*');
+function getByClass(classname, obj){
+	var dom = obj?obj:document;
+	var elementAll = dom.getElementsByTagName('*');
 	var classElemts = [];
 
 	for(var i = 0; i < elementAll.length; i++){
@@ -24,3 +24,4 @@ window.requestAnimFrame = (function() {
 			return window.setTimeout(callback, 1000 / 60);
 		};
 })();
+

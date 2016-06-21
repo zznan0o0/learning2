@@ -81,59 +81,59 @@
 	</ul>
 </div>
 <script type="text/javascript">
-	var con = document.getElementById('pic');
-	var menu = document.getElementById('menu').getElementsByTagName('a');
-	var timer = null;
-	var autoTimer = null
-	var select = 0;
+	var con1 = document.getElementById('pic');
+	var menu_ad = document.getElementById('menu').getElementsByTagName('a');
+	var timer1 = null;
+	var autoTimer1 = null
+	var select1 = 0;
 
-	for(var i = 0; i < menu.length; i++){
-		menu[i].ind = i;
-		menu[i].onmouseover = function(){
+	for(var i = 0; i < menu_ad.length; i++){
+		menu_ad[i].ind = i;
+		menu_ad[i].onmouseover = function(){
 			play(this.ind);
 		}
-		menu[i].onmouseout = function(){
+		menu_ad[i].onmouseout = function(){
 			auto(this.ind);
 		}
 	}
 
-	function play(i){
-		clearInterval(timer);
+	function play1(i){
+		clearInterval(timer1);
 
 		var target = i * -490
-		menu[select].className = '';
-		select = i;
-		menu[select].className = 'select';
+		menu_ad[select1].className = '';
+		select1 = i;
+		menu_ad[select1].className = 'select';
 
-		timer = setInterval(function(){
-			var speed = (target - con.offsetLeft) / 10;
+		timer1 = setInterval(function(){
+			var speed = (target - con1.offsetLeft) / 10;
 			speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
 
-			if(con.offsetLeft == target){
-				clearInterval(timer);
+			if(con1.offsetLeft == target){
+				clearInterval(timer1);
 			}
 
-			con.style.left = con.offsetLeft + speed +'px';
+			con1.style.left = con1.offsetLeft + speed +'px';
 		}, 20);
 	}
 
-	function auto(start){
-		clearInterval(autoTimer);
+	function auto1(start){
+		clearInterval(autoTimer1);
 
 		i = start;
 
-		autoTimer = setInterval(function(){
-			play(i);
+		autoTimer1 = setInterval(function(){
+			play1(i);
 
 			i++;
 
-			if(i >= menu.length){
+			if(i >= menu_ad.length){
 				i = 0;
 			}
 		}, 3000);
 	}
 
-	auto(1);
+	auto1(1);
 </script>
 </body>
 </html>

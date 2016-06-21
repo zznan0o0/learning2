@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+	var src = '';
+	function set(key){
+		var img = document.createElement('img');
+  		img.addEventListener('load', function(){
+			var imgCanvas = document.createElement('canvas'),
+			imgContext = imgCanvas.getContext('2d');
+			imgCanvas.width = this.width;
+			imgCanvas.height = this.height;
+
+			imgContext.drawImage(this, 0, 0, this.width, this.height);
+			var imgAsDataURL = imgCanvas.toDataURL('image/png');
+
+			try{
+				localStorage.setItem(key, imgAsDataURL);
+			}
+			catch(e){
+				console.log('localStorageErr:' + e);
+			}
+		}, false);
+
+		img.src = src;
+	}
+
+	function get(key){
+		var srcStr = localStorage.getItem(key);
+		var imgObj = document.createElement('img');
+		imgObj.src = srcStr;
+		document.body.appendChild(imgObj);
+	}
+	src = '1808244519261h45.jpg';
+	set('test');
+</script>
+</body>
+</html>

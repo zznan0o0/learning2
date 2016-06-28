@@ -9,7 +9,7 @@ var grain = {
 }
 
 var WIDTH = boom.offsetWidth, HEIGHT = boom.offsetHeight;
-Math.floor
+
 var NUM = {
 	x: Math.ceil(WIDTH / grain.width),
 	y: Math.ceil(HEIGHT / grain.height)
@@ -109,7 +109,6 @@ function boomMove(obj, arry){
 		}
 		else{
 			if(arryLeft > X_0 && arryTop > Y_0){
-				console.log(1)
 				arry[i].style['left'] = arryLeft + arry[i].speedX +'px';
 				arry[i].style['top'] = arryTop + arry[i].speedY + 'px';
 				arry[i].style['opacity'] = opacity - 0.05;
@@ -135,7 +134,6 @@ function boomMove(obj, arry){
 				arry[i].style['opacity'] = opacity - 0.05;
 			}
 		}
-
 
 	}
 }

@@ -1,11 +1,11 @@
 # jq源码学习笔记		
 1. [14, 94] 定义一些变量		
 -----
-	```javascript
-		jQuery = function( selector, context ) {
-			return new jQuery.fn.init( selector, context, rootjQuery );
-		}
-	```
+```javascript
+	jQuery = function( selector, context ) {
+		return new jQuery.fn.init( selector, context, rootjQuery );
+	}
+```
 
 
 

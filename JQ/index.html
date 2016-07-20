@@ -4,6 +4,29 @@
 	<title></title>
 </head>
 <body>
+<script type="text/javascript">
+	(function(window){
+		var a = 1;
+		window.zzn = function(){
+			return new zzn.fn.init();
+		}
 
+		zzn.fn = zzn.prototype = {
+			constructor: zzn,
+			init: function(){
+				console.log(111);
+			},
+			a: function(){
+				return zzn.a();
+			}
+		}
+
+		zzn.a = function(){
+			console.log(a)
+			return this;
+		}
+		zzn.fn.init.prototype = zzn.fn;
+	})(window);
+</script>
 </body>
 </html>

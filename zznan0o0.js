@@ -100,3 +100,7 @@ function getStyle(obj, attr){
 function calcDistance(loc1, loc2){
 	return Math.sqrt((loc1.x - loc2.x)*(loc1.x - loc2.x) + (loc1.y - loc2.y)*(loc1.y - loc2.y))
 }
+
+var childarr=[].filter.call(document.getElementsByTagName('*'),function(item){
+	return item.getAttribute('class')==yourClass;
+})

@@ -1,10 +1,24 @@
 # jq源码学习笔记		
 1. [14, 94]  定义一些变量		
 ---
+		
+本身fn等于原型
 ```javascript
-jQuery = function( selector, context ) {
-	return new jQuery.fn.init( selector, context, rootjQuery );
-}
+//函数自执行避免私有变量泄露
+(function(window){
+	window.zzn = function(){
+		return new zzn.fn.init();
+	}
+
+	zzn.fn = zzn.prototype = {
+		constructor: zzn,
+		init: function(){
+			console.log(111)
+		}
+	}
+})(window);		
+
+
 ```
 
 
@@ -18,7 +32,8 @@ jQuery = function( selector, context ) {
 
 * `arrayObject.concat(arrayX,arrayX,......,arrayX)`	链接数组且不改变与昂数组;		
 
-* `RegExpObject.source`	返回模式匹配所用的文本		
+* `RegExpObject.source`	返回模式匹配所用的文本
+* `RegExpObject.exec(string)`	方法用于检索字符串中的正则表达式的匹配
 
 
 
@@ -41,4 +56,3 @@ jQuery = function( selector, context ) {
 
 * `/[+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|)/`	检验number是否太大		
 * `/\S+/g`	全局中检验非空白字符一次or多次
-* `/^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/`	

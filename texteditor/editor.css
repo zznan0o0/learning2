@@ -1,0 +1,126 @@
+html, body, div, span, applet, object, iframe,  h1, h2, h3, h4, h5, h6, p, blockquote, pre,  a, abbr, acronym, address, big, cite, code,  del, dfn, em, img, ins, kbd, q, s, samp,  small, strike, strong, sub, sup, section, tt, var,  b, u, i, center,  dl, dt, dd, ol, ul, li,  fieldset, form, label, legend,  table, caption, tbody, tfoot, thead, tr, th, td,  article, aside, canvas, details, embed,  figure, figcaption, footer, header, hgroup,  menu, nav, output, ruby, section, summary,  time, mark, audio, video {margin: 0; padding: 0; border: 0; font: inherit;  word-wrap: break-word; word-break: normal;}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,  footer, header, hgroup, menu, nav, section {display: block;}
+html {-webkit-text-size-adjust:none; font-family:"Microsoft Yahei","微软雅黑",Tahoma,Arial,Helvetica,STHeiti;}
+body { line-height: 1; overflow-x:hidden; overflow-y:auto;}
+ol, ul { list-style: none; } 
+blockquote, q { quotes: none; } 
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } 
+ins { text-decoration: none; } 
+del { text-decoration: line-through; } 
+table {border-collapse: collapse; border-spacing: 0;}
+h1,h2,h3,h4,h5,h6{font-weight:bold;}
+/*.clearfix { clear:both; } */
+.clearfix {zoom:1;}
+.clearfix:after {content:"."; height:0; display:block; clear:both; visibility:hidden;}
+.none { display: none; } 
+strong{font-weight:bold;}
+.txtcenter {text-align:center;}
+
+a {color: #000; -webkit-transition: color .1s linear; -moz-transition: color .1s linear; -o-transition: color .1s linear; -ms-transition: color .1s linear;transition: color .1s linear; text-decoration:none;}
+a:hover {color: #232527; opacity:0.8; -moz-opacity:0.8; -o-opacity:0.8; filter:alpha(opacity=80);}
+a img { border: none; }
+a img { vertical-align: bottom; }
+a img:hover{filter:alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity: 0.8; opacity: 0.8;}
+
+.editor{
+	width: 890px;
+	height: 450px;
+	border: 1px solid #ccc;
+}
+.editor_head, .editor_foot{
+	width: 890px;
+	background-color: #E8E8E8;
+	height: 32px;
+	padding: 2px 0 2px 0;
+	line-height: 32px;
+}
+.editor_head{
+	border-bottom: 1px #ccc solid;
+}
+.editor_foot{
+	border-top: 1px #ccc solid;
+}
+.editor_body{
+	height: 376px;
+}
+
+.tag{
+    background: url("o_edbar.gif") no-repeat;
+    cursor: pointer;
+    display: inline;
+    float: left;
+    height: 22px;
+    line-height: 22px;
+    margin-left: 5px;
+    margin-right: 2px;
+    margin-top: 4px;
+}
+
+
+.curr0 { background-position: -1px -57px; width:22px; } /* B加粗 */
+.curr1 { background-position: -31px -57px; width:22px; } /* I斜体 */
+.curr2 { background-position: -58px -57px; width:22px; } /* U下划线 */
+.curr3 { background-position: -86px -57px; width:73px; } /* 字号 */
+.curr4 { background-position: -86px -28px; width:73px; } /* 字体 */
+.curr5 { background-position: -164px -57px; width:22px; background-color:#000; } /* 文字颜色 */
+.curr6 { background-position: -194px -57px; width:22px; } /* 超链接 */
+.curr7 { background-position: -45px -84px; width:22px; } /* 剪贴 */
+.curr8 { background-position: -76px -84px; width:22px; } /* 复制 */
+.curr9 { background-position: -58px -140px; width:22px; } /* 左对齐 */
+.curr10 { background-position: -86px -140px; width:22px; } /* 居中对齐 */
+.curr11 { background-position: -113px -140px; width:22px; } /* 右对齐 */
+.curr12 { background-position: -476px -84px; width:22px; } /* 项目符号 */
+.curr13 { background-position: -505px -84px; width:22px; } /* 编号 */
+.curr14 { background-position: -333px -140px; width:22px; } /* 插入表格 */
+.curr15 { background-position: -532px -84px; width:22px; } /* 减少缩进 */
+.curr16 { background-position: -560px -84px; width:22px; } /* 增加缩进 */
+.curr17 { background-position: -455px -140px; width:22px; } /* 清除样式 */
+.curr18 { background-position: -222px -57px; width:73px; } /* 插入图片 */
+.curr19 { background-position: -380px -57px; width:74px; } /* 插入表情 */
+.curr20 { background-position: -460px -57px; width:71px; } /* 自动排版 */
+
+.curr0:hover { background-position: 0px -2px; width:22px; } /* B加粗 */
+.curr1:hover { background-position: -30px -2px; width:22px; } /* I斜体 */
+.curr2:hover { background-position: -58px -2px; width:22px; } /* U下划线 */
+.curr3:hover { background-position: -86px -57px; width:73px; } /* 字号 */
+.curr4:hover { background-position: -86px -28px; width:73px; } /* 字体 */
+.curr5:hover { background-position: -164px -2px; width:22px; background-color:#000; } /* 文字颜色 */
+.curr6:hover { background-position: -194px -2px; width:22px; } /* 超链接 */
+.curr7:hover { background-position: -45px -192px; width:22px; } /* 剪贴 */
+.curr8:hover { background-position: -76px -192px; width:22px; } /* 复制 */
+.curr9:hover { background-position: -58px -247px; width:22px; } /* 左对齐 */
+.curr10:hover { background-position: -86px -247px; width:22px; } /* 居中对齐 */
+.curr11:hover { background-position: -113px -247px; width:22px; } /* 右对齐 */
+.curr12:hover { background-position: -476px -192px; width:22px; } /* 项目符号 */
+.curr13:hover { background-position: -505px -192px; width:22px; } /* 编号 */
+.curr14:hover { background-position: -333px -140px; width:22px; } /* 插入表格 */
+.curr15:hover { background-position: -532px -192px; width:22px; } /* 减少缩进 */
+.curr16:hover { background-position: -560px -192px; width:22px; } /* 增加缩进 */
+.curr17:hover { background-position: -455px -247px; width:22px; } /* 清除样式 */
+.curr18:hover { background-position: -222px -2px; width:73px; } /* 插入图片 */
+.curr19:hover { background-position: -380px -2px; width:74px; } /* 插入表情 */
+.curr20:hover { background-position: -460px -2px; width:71px; } /* 自动排版 */
+
+.curr0:active { background-position: 0 -28px; width:22px; } /* B加粗 */
+.curr1:active { background-position: -30px -28px; width:22px; } /* I斜体 */
+.curr2:active { background-position: -58px -28px; width:22px; } /* U下划线 */
+.curr3:active { background-position: -86px -57px; width:73px; } /* 字号 */
+.curr4:active { background-position: -86px -28px; width:73px; } /* 字体 */
+.curr5:active { background-position: -164px -28px; width:22px; background-color:#000; } /* 文字颜色 */
+.curr6:active { background-position: -194px -28px; width:22px; } /* 超链接 */
+.curr7:active { background-position: -45px -299px; width:22px; } /* 剪贴 */
+.curr8:active { background-position: -76px -299px; width:22px; } /* 复制 */
+.curr9:active { background-position: -58px -353px; width:22px; } /* 左对齐 */
+.curr10:active { background-position: -86px -353px; width:22px; } /* 居中对齐 */
+.curr11:active { background-position: -113px -353px; width:22px; } /* 右对齐 */
+.curr12:active { background-position: -476px -299px; width:22px; } /* 项目符号 */
+.curr13:active { background-position: -505px -299px; width:22px; } /* 编号 */
+.curr14:active { background-position: -333px -140px; width:22px; } /* 插入表格 */
+.curr15:active { background-position: -532px -299px; width:22px; } /* 减少缩进 */
+.curr16:active { background-position: -560px -299px; width:22px; } /* 增加缩进 */
+.curr17:active { background-position: -455px -353px; width:22px; } /* 清除样式 */
+.curr18:active { background-position: -222px -28px; width:73px; } /* 插入图片 */
+.curr19:active { background-position: -380px -28px; width:74px; } /* 插入表情 */
+.curr20:active { background-position: -460px -28px; width:71px; } /* 自动排版 */
+

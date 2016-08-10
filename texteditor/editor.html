@@ -1,24 +1,70 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-<p>1234567890</p>
-<button id="btn">button</button>
-<script type="text/javascript">
-	var btn = document.getElementById('btn');
-
-	btn.onclick = function(){
-		var select = getSelection();
-		var selectR = select.getRangeAt(0);
-
-		if(selectR.collapsed){
-			selectR.setStart(selectR.startContainer, selectR.startOffset - 1);
-		}
-
-		selectR.deleteContents();
-	}
-</script>
-</body>
+<!doctype html>
+<html dir="ltr" lang="zh-CN">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <style type="text/css">
+      #editor{
+        float:left; width:380px;background:#D5F3F4;padding-left:10px;
+      }
+      #editor span.button{
+        display:block;float:left;border: 1px solid  #CCC;margin:1px 5px 1px 0px ;color: #000;
+        background: #D0E8FC;width:40px;height:20px;text-align:center;
+      }
+      #editor select{ display:block; float:left;height:20px;width:60px;margin-right:5px;}
+      textarea {width:382px;height:100px;}
+    </style>
+    <title>富文本编辑器</title>
+  </head>
+  <body>
+    <div id="editor">
+      <span class="button">加粗</span>
+      <span class="button">斜体</span>
+      <span class="button">下划</span>
+      <span class="button">居中</span>
+      <span class="button">居左</span>
+      <span class="button">居右</span>
+      <span class="button">悬挂</span>
+      <span class="button">缩进</span>
+      <span class="button">无序</span>
+      <span class="button">有序</span>
+      <select>
+        <option value="SimSun">宋体</option>
+        <option value="LiSu">隶书</option>
+        <option value="KaiTi_GB2312">楷体</option>
+        <option value="YouYuan">幼圆</option>
+        <option value="SimHei">黑体</option>
+        <option value="Microsoft YaHei">雅黑</option>
+        <option value="Comic Sans MS">Comic Sans MS</option>
+      </select>
+      <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <select>
+        <option style="color:#000000" value="#000000">■■</option>
+        <option style="color:#FF8080" value="#FF8080">■■</option>
+        <option style="color:#FFFF00" value="#FFFF00">■■</option>
+        <option style="color:#80FF00" value="#80FF00">■■</option>
+        <option style="color:#00FFFF" value="#00FFFF">■■</option>
+        <option style="color:#0000FF" value="#0000FF">■■</option>
+        <option style="color:#FF00FF" value="#FF00FF">■■</option>
+      </select>
+      <select>
+        <option style="color:#000000" value="#000000">■■</option>
+        <option style="color:#FF8080" value="#FF8080">■■</option>
+        <option style="color:#FFFF00" value="#FFFF00">■■</option>
+        <option style="color:#80FF00" value="#80FF00">■■</option>
+        <option style="color:#00FFFF" value="#00FFFF">■■</option>
+        <option style="color:#0000FF" value="#0000FF">■■</option>
+        <option style="color:#FF00FF" value="#FF00FF">■■</option>
+      </select>
+    </div>
+    <br style="clear:both"/>
+    <textarea></textarea>
+    <script type="text/javascript" src="editor.js"></script>
+  </body>
 </html>
